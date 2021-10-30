@@ -2,11 +2,13 @@ import "./App.css";
 
 import { useCandyMachineList } from "./useCandyMachineList";
 import { usePeriodUpdateOnChainMintData } from "./usePeriodicFetchOnChainMintData";
+import { useSolPrice } from "./useSolPrice";
 
 const App = () => {
+  const solPrice = useSolPrice();
   const machinePublicKeys = useCandyMachineList();
 
-  usePeriodUpdateOnChainMintData(machinePublicKeys);
+  usePeriodUpdateOnChainMintData(machinePublicKeys, solPrice);
 
   return (
     <div>
