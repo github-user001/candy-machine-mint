@@ -20,12 +20,12 @@ export interface CandyMachine {
   program: anchor.Program;
 }
 
-interface CandyMachineState {
+export interface CandyMachineState {
   candyMachine: CandyMachine;
   itemsAvailable: number;
   itemsRedeemed: number;
   itemsRemaining: number;
-  goLiveDate: Date;
+  goLiveDateSecondsPastEpoch: number;
 }
 
 export const awaitTransactionSignatureConfirmation = async (
@@ -157,12 +157,8 @@ export const getCandyMachineState = async (
   });
 
   const idl = await anchor.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider);
-  // console.log({ idl });
-
-  console.log("hi");
-
   const program = new anchor.Program(idl, CANDY_MACHINE_PROGRAM, provider);
-  console.log("hi");
+
   const candyMachine = {
     id: candyMachineId,
     connection,
@@ -171,29 +167,26 @@ export const getCandyMachineState = async (
 
   const state: any = await program.account.candyMachine.fetch(candyMachineId);
 
-  console.log(state);
-  console.log(state.data);
   const itemsAvailable = state.data.itemsAvailable.toNumber();
   const itemsRedeemed = state.itemsRedeemed.toNumber();
   const itemsRemaining = itemsAvailable - itemsRedeemed;
 
-  let goLiveDate = state.data.goLiveDate.toNumber();
-  console.log(goLiveDate);
-  goLiveDate = new Date(goLiveDate * 1000);
+  let goLiveDateSecondsPastEpoch = state.data.goLiveDate.toNumber();
+  // goLiveDate = new Date(goLiveDate * 1000);
 
-  console.log({
-    itemsAvailable,
-    itemsRedeemed,
-    itemsRemaining,
-    goLiveDate,
-  });
+  // console.log({
+  //   itemsAvailable,
+  //   itemsRedeemed,
+  //   itemsRemaining,
+  //   goLiveDate,
+  // });
 
   return {
     candyMachine,
     itemsAvailable,
     itemsRedeemed,
     itemsRemaining,
-    goLiveDate,
+    goLiveDateSecondsPastEpoch,
   };
 };
 

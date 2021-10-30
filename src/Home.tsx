@@ -52,7 +52,7 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
-  const [startDate, setStartDate] = useState(new Date(props.startDate));
+  // const [startDate, setStartDate] = useState(new Date(props.startDate));
 
   const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
@@ -63,7 +63,7 @@ const Home = (props: HomeProps) => {
 
       const {
         candyMachine,
-        goLiveDate,
+        goLiveDateSecondsPastEpoch,
         itemsAvailable,
         itemsRemaining,
         itemsRedeemed,
@@ -78,7 +78,7 @@ const Home = (props: HomeProps) => {
       setItemsRedeemed(itemsRedeemed);
 
       setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
+      // setStartDate(goLiveDateSecondsPassedEpoch);
       setCandyMachine(candyMachine);
     })();
   };
@@ -188,7 +188,8 @@ const Home = (props: HomeProps) => {
             onClick={onMint}
             variant="contained"
           >
-            {isSoldOut ? (
+            <div>hi</div>
+            {/* {isSoldOut ? (
               "SOLD OUT"
             ) : isActive ? (
               isMinting ? (
@@ -202,8 +203,8 @@ const Home = (props: HomeProps) => {
                 onMount={({ completed }) => completed && setIsActive(true)}
                 onComplete={() => setIsActive(true)}
                 renderer={renderCounter}
-              />
-            )}
+              /> */}
+            {/* )} */}
           </MintButton>
         )}
       </MintContainer>
