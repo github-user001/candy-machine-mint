@@ -8,7 +8,12 @@ const App = () => {
 
   usePeriodUpdateOnChainMintData(machinePublicKeys);
 
-  return <div>{JSON.stringify(machinePublicKeys, null, 4)}</div>;
+  return (
+    <div>
+      Keep this page open to update Minty's NFT Metadata with live, on-chain
+      information
+    </div>
+  );
 };
 
 export default App;
