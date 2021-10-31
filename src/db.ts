@@ -45,7 +45,7 @@ export const saveCandyMachineState = async (
     candyMachineDocRef,
     {
       ...candyMachineState,
-      upatedAt: Date.now(),
+      updatedAt: Date.now(),
     },
     { merge: true }
   );
