@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const COINGECKO_POOL_INTERVAL = 1000 * 60; // 60 sec
 export const COINGECKO_API = "https://api.coingecko.com/api/v3/";

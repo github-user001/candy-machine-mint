@@ -9,9 +9,7 @@ export const useCandyMachineList = (): Array<any> => {
   // Once because we are going to be updating this data and we don't want
   // to get into an infinite updating situation for now.
   // Other, more involved ways of handling this can be worked later
-  const [machines = [], loading, error] = useCollectionDataOnce(
-    collections.candyMachine
-  );
+  const [machines = []] = useCollectionDataOnce(collections.candyMachine);
 
   const machinePublicKeys = machines.map((machine) => {
     return new anchor.web3.PublicKey(machine.machineId);
