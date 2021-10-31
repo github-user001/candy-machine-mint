@@ -27,18 +27,18 @@ export const saveCandyMachineState = async (
   candyMachineId: string,
   candyMachineState: any
 ) => {
-  console.log(candyMachineState);
-
+  // return;
   const candyMachineDocRef = doc(
     db,
     CANDY_MACHINE_COLLECTION_NAME,
-    candyMachineId
+    // candyMachineId
+    "0JHgiC343DT0THO3auOk"
   );
   return setDoc(
     candyMachineDocRef,
     {
       ...candyMachineState,
-      updatedAt: Date.now(),
+      // updatedAt: Date.now(),
     },
     { merge: true }
   );

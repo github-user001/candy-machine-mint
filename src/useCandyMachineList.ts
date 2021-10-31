@@ -11,6 +11,8 @@ export const useCandyMachineList = (): Array<any> => {
   // Other, more involved ways of handling this can be worked later
   const [machines = []] = useCollectionDataOnce(collections.candyMachine);
 
+  console.log({ machines });
+
   const machinePublicKeys = machines.map((machine) => {
     return new anchor.web3.PublicKey(machine.machineId);
   });

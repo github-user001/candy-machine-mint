@@ -36,11 +36,12 @@ export const usePeriodUpdateOnChainMintData = (
             itemsAvailable,
             itemsRemaining,
             itemsRedeemed,
-            price: {
-              solana: solanaNftCost,
-              lamports: lamportsNftCost,
-              usd: usdNftCost,
-            },
+            // price: {
+            //   solana: solanaNftCost,
+            //   lamports: lamportsNftCost,
+            //   usd: usdNftCost,
+            // },
+            price: lamportsNftCost,
           });
         }
       );
