@@ -1,5 +1,5 @@
 import * as anchor from "@project-serum/anchor";
-import { Commitment, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { Commitment } from "@solana/web3.js";
 import { CandyMachineState, getCandyMachineState } from "./candy-machine";
 import { saveCandyMachineState } from "./db";
 import useInterval from "./useInterval";
@@ -28,8 +28,8 @@ export const usePeriodUpdateOnChainMintData = (
           itemsRedeemed,
           price: lamportsNftCost,
         }: CandyMachineState) => {
-          const solanaNftCost = lamportsNftCost / LAMPORTS_PER_SOL;
-          const usdNftCost = solUsdConversion * solanaNftCost;
+          // const solanaNftCost = lamportsNftCost / LAMPORTS_PER_SOL;
+          // const usdNftCost = solUsdConversion * solanaNftCost;
 
           saveCandyMachineState(machinePublicKey.toString(), {
             goLiveDateSecondsPastEpoch,
